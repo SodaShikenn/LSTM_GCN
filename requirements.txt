@@ -1,0 +1,5 @@
+scikit-learn
+torch==1.12.1
+paddlepaddle==2.2.1
+paddleocr==2.6
+networkx
