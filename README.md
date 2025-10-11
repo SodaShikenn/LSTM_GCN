@@ -5,3 +5,5 @@ The LSTM+GCN network structure performs very well in recognizing various documen
 ref paper: https://arxiv.org/abs/1609.02907
 
 ref code: https://github.com/tkipf/pygcn
+
+ref doc: https://distill.pub/2021/gnn-intro/
