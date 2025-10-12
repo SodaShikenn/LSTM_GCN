@@ -1,5 +1,6 @@
 scikit-learn
 torch
-paddlepaddle>=3.0.0
-paddleocr>=2.8.0
+paddlepaddle==3.0.0
+paddleocr==2.10.0
 networkx
+matplotlib
