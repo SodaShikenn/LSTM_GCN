@@ -1,0 +1,10 @@
+ticket_num,0
+other,1
+starting_station,2
+destination_station,3
+train_num,4
+seat_number,5
+date,6
+ticket_grade,7
+ticket_price,8
+name,9
