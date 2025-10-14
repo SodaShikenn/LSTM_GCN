@@ -14,3 +14,11 @@ VOCAB_SIZE = 3000
 
 VOCAB_PATH = ROOT_PATH + '/output/vocab.txt'
 LABEL_PATH = ROOT_PATH + '/output/label.txt'
+
+EMBEDDING_DIM = 100
+HIDDEN_DIM = 64
+OUTPUT_DIM = 10
+LR = 1e-3
+EPOCH = 100
+
+MODEL_DIR = ROOT_PATH + '/output/model/'
