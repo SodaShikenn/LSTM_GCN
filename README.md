@@ -256,3 +256,10 @@ Contributions are welcome! Please follow these steps:
 ## 📧 Contact
 
 For questions or issues, please open an issue on the repository.
+
+---
+
+## 🌐 Languages
+
+- [English](README.md)
+- [日本語](README_ja.md)
