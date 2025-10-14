@@ -91,6 +91,27 @@ Input Image → OCR (PaddleOCR) → Text Extraction → Graph Construction
 
 ---
 
+## 📊 Dataset
+
+The dataset used in this project is **self-created** by collecting railway ticket images from the Internet. The dataset includes various types of Chinese railway tickets with different layouts and formats.
+
+### Dataset Characteristics
+
+- **Source**: Collected from publicly available Internet sources
+- **Type**: Chinese railway ticket images
+- **Format**: JPEG/PNG images
+- **Annotations**: Text regions with category labels (ticket number, station names, date, price, etc.)
+
+### Data Organization
+
+- Training images are stored in `input/imgs/train/`
+- Test images are stored in `input/imgs/test/`
+- OCR results and annotations are saved in `output/csv/`
+
+**Note**: Due to privacy considerations, the original dataset is not included in this repository. Users can collect their own railway ticket images or similar structured documents for training and testing.
+
+---
+
 ## 📁 Project Structure
 
 ```text

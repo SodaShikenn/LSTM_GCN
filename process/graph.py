@@ -6,8 +6,9 @@ import numpy as np
 import sys
 from tqdm import tqdm
 
-sys.path.append('..') # 到上一层目录再引入config配置项
+sys.path.append('..') # 到上一层目录再引入配置项
 from config import * 
+from utils import *
 
 class Graph():
     # 创建链接
@@ -45,9 +46,36 @@ class Graph():
         loss_idx = set(df.index) - node_idx
         return graph_dict, list(loss_idx)
 
+    # 计算A矩阵
+    def get_adjacency_norm(self, graph_dict):
+        G = nx.from_dict_of_lists(graph_dict)
+        A = nx.adjacency_matrix(G)
+        A_new = A + np.eye(*A.shape)
+        D = np.array(A_new.sum(1)).flatten()
+        # D^-0.5 A D^-0.5
+        return np.diag(D**(-0.5)) @ A_new @ np.diag(D**(-0.5))
+    
+
+    
 if __name__ == '__main__':
+    graph = Graph()
+
+    for file_path in tqdm(glob(TRAIN_CSV_DIR + '*.csv')):
+        graph_dict, loss_idx = graph.connect(file_path)
+        adj = graph.get_adjacency_norm(graph_dict)
+        file_name = os.path.split(file_path)[1][:-3] + 'pkl'
+        file_dump([adj, loss_idx], TRAIN_GRAPH_DIR + file_name)
+
+    for file_path in tqdm(glob(TEST_CSV_DIR + '*.csv')):
+        graph_dict, loss_idx = graph.connect(file_path)
+        adj = graph.get_adjacency_norm(graph_dict)
+        file_name = os.path.split(file_path)[1][:-3] + 'pkl'
+        file_dump([adj, loss_idx], TEST_GRAPH_DIR + file_name)
+    
     # graph = Graph()
     # graph_dict, loss_idx = graph.connect(TRAIN_CSV_DIR + '34908612.jpeg.csv')
+    # adj = graph.get_adjacency_norm(graph_dict)
+    # print(adj.shape)
     # # 画图
     # G = nx.from_dict_of_lists(graph_dict)
     # fig, ax = plt.subplots()
