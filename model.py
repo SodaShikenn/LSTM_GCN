@@ -1,13 +1,48 @@
-# model.py
 import torch
 import torch.nn as nn
 from config import *
+import torch.nn.functional as F
 
+class GraphConvolution(Module):
+    """
+    Simple GCN layer, similar to https://arxiv.org/abs/1609.02907
+    """
+    def __init__(self, in_features, out_features, bias=True):
+        super(GraphConvolution, self).__init__()
+        self.in_features = in_features
+        self.out_features = out_features
+        self.weight = Parameter(torch.FloatTensor(in_features, out_features))
+        if bias:
+            self.bias = Parameter(torch.FloatTensor(out_features))
+        else:
+            self.register_parameter('bias', None)
+        self.reset_parameters()
+
+    def reset_parameters(self):
+        stdv = 1. / math.sqrt(self.weight.size(1))
+        self.weight.data.uniform_(-stdv, stdv)
+        if self.bias is not None:
+            self.bias.data.uniform_(-stdv, stdv)
+
+    def forward(self, input, adj):
+        support = torch.mm(input, self.weight)
+        output = torch.spmm(adj, support)
+        if self.bias is not None:
+            return output + self.bias
+        else:
+            return output
+
+    def __repr__(self):
+        return self.__class__.__name__ + ' (' \
+               + str(self.in_features) + ' -> ' \
+               + str(self.out_features) + ')'
 class Model(nn.Module):
     def __init__(self):
         super().__init__()
         self.embed = nn.Embedding(VOCAB_SIZE, EMBEDDING_DIM)
         self.lstm = nn.LSTM(EMBEDDING_DIM, HIDDEN_DIM)
+        self.gc1 = GraphConvolution(HIDDEN_DIM, HIDDEN_DIM * 2)
+        self.gc2 = GraphConvolution(HIDDEN_DIM * 2, OUTPUT_DIM)
 
     def get_lstm_feature(self, inputs):
         feature_list = []
@@ -20,8 +55,11 @@ class Model(nn.Module):
 
     def forward(self, inputs, adj):
         feature = self.get_lstm_feature(inputs)
-        return feature
-    
+        adj = torch.tensor(adj, dtype=torch.float)
+        out = F.relu(self.gc1(feature, adj))
+        out = F.softmax(self.gc2(out, adj))
+        return out
+
 
 if __name__ == '__main__':
     model = Model()
