@@ -63,8 +63,7 @@ Input Image → OCR (PaddleOCR) → Text Extraction → Graph Construction
 1. **Clone the repository**
 
    ```bash
-   git clone <repository-url>
-   cd code
+   git clone git@github.com:SodaShikenn/LSTM_GCN.git
    ```
 
 2. **Create virtual environment** (optional but recommended)
