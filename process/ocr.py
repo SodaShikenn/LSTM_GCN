@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings('ignore', module='paddle')  # Suppress PaddlePaddle warnings
+
 from paddleocr import PaddleOCR
 import pandas as pd
 from glob import glob
@@ -7,7 +10,7 @@ from tqdm import tqdm
 import logging
 
 # 屏蔽调试错误
-PaddleOCR.logging.disable(logging.DEBUG)
+logging.disable(logging.DEBUG)
 
 class OCR():
     def __init__(self):

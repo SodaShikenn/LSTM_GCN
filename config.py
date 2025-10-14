@@ -22,5 +22,3 @@ LR = 1e-3
 EPOCH = 200
 
 MODEL_DIR = ROOT_PATH + '/output/model/'
-
-print(MODEL_DIR)
