@@ -63,8 +63,7 @@ LSTM-GCNは、以下の2つの特徴を組み合わせたハイブリッドモ�
 1. **リポジトリのクローン**
 
    ```bash
-   git clone <repository-url>
-   cd code
+   git clone git@github.com:SodaShikenn/LSTM_GCN.git
    ```
 
 2. **仮想環境の作成**（推奨）
