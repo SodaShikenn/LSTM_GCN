@@ -15,7 +15,7 @@ This network architecture demonstrates excellent performance on various document
 
 - Railway tickets
 - ID cards and passports
-- Driver's licenses
+- Driving licenses
 - Invoices and receipts
 - Various structured documents
 
