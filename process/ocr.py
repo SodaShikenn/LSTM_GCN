@@ -17,7 +17,7 @@ class OCR():
         self.ocr = PaddleOCR(use_doc_orientation_classify=False, 
                              use_doc_unwarping=False,
                              use_textline_orientation=False,
-                             ocr_version='PP-OCRv4',)
+                             ocr_version='PP-OCRv3',)
 
     def scan(self, file_path, output_path, marked_path=None):
         # 文字识别
