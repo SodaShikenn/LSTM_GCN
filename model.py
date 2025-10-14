@@ -2,6 +2,10 @@ import torch
 import torch.nn as nn
 from config import *
 import torch.nn.functional as F
+import math
+import torch
+from torch.nn.parameter import Parameter
+from torch.nn.modules.module import Module
 
 class GraphConvolution(Module):
     """
@@ -57,7 +61,7 @@ class Model(nn.Module):
         feature = self.get_lstm_feature(inputs)
         adj = torch.tensor(adj, dtype=torch.float)
         out = F.relu(self.gc1(feature, adj))
-        out = F.softmax(self.gc2(out, adj))
+        out = F.softmax(self.gc2(out, adj),dim=0)
         return out
 
 

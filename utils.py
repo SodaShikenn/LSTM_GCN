@@ -2,6 +2,7 @@ import pickle
 import re
 import pandas as pd
 from config import *
+from sklearn.metrics import classification_report
 
 
 def file_dump(obj, file_path):
@@ -50,6 +51,10 @@ def load_data(file_path):
         # print(inputs, targets)
         # exit()
     return inputs, targets
+
+# 多分类评估指标
+def report(y_true, y_pred, target_names):
+    return classification_report(y_true, y_pred, target_names=target_names)
 
 if __name__ == '__main__':
     res = load_data('./output/train/csv_label/34908612.jpeg.csv')

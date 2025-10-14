@@ -550,5 +550,3 @@ LABEL_PATH = ROOT_PATH + '/output/label.txt'
 - **コード行数**：約500行
 
 ---
-
-**最終更新**：2025-01-15
