@@ -8,4 +8,4 @@ LSTM＋GCN のネットワーク構造は、身分証明書、パスポート、
 
 参考コード：https://github.com/tkipf/pygcn
 
-参考解説：https://distill.pub/2021/gnn-intro/
+参考解説：https://distill.pub/2021/gnn-intro/  https://ai.plainenglish.io/graph-convolutional-networks-gcn-baf337d5cb6b
