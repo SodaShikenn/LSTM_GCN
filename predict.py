@@ -31,7 +31,7 @@ if __name__ == '__main__':
         inputs.pop(i)
 
     # 模型预测
-    model = torch.load(MODEL_DIR + 'model_100.pth', weights_only=False)
+    model = torch.load(MODEL_DIR + 'model_200.pth', weights_only=False)
     y_pred = model(inputs, adj)
     y_label = y_pred.argmax(dim=1).tolist()
 

@@ -3,7 +3,7 @@ from utils import *
 from model import *
 
 if __name__ == '__main__':
-    model = torch.load(MODEL_DIR + 'model_100.pth', weights_only=False)
+    model = torch.load(MODEL_DIR + 'model_200.pth', weights_only=False)
 
     criterion = nn.CrossEntropyLoss()
 

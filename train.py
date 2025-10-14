@@ -39,5 +39,5 @@ if __name__ == '__main__':
             loss.backward()
             optimizer.step()
 
-        torch.save(model, f'{MODEL_DIR}model_100.pth')
+        torch.save(model, f'{MODEL_DIR}model_200.pth')
 
